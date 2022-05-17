@@ -2,7 +2,6 @@
 
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -61,14 +60,21 @@
                 android:inputType="textPersonName"
                 android:minHeight="48dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/birthDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Date de naissance"
-                android:inputType="date"
-                android:minHeight="48dp" />
+                android:text="Date de naissance :" />
+
+            <Button
+                android:id="@+id/date_picker"
+                style="?android:spinnerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="openDatePicker"
+                android:text="01 JAN 2022"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/phone"
@@ -110,6 +116,13 @@
             android:layout_height="60dp"
             android:layout_margin="@dimen/little_margin"
             android:text="Validation" />
+
+        <Button
+            android:id="@+id/boutonListe"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="@dimen/little_margin"
+            android:text="Liste des contacts" />
 
     </LinearLayout>
 </ScrollView>
