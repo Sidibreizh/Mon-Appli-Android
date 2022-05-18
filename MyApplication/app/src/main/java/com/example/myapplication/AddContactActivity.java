@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -19,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.TimeZone;
 
-public class AddContactActivity extends AppCompatActivity {
+public class AddContactActivity extends AppCompatActivity{
 
     private RadioButton radioButtonM;
     private RadioButton radioButtonF;
@@ -48,6 +50,11 @@ public class AddContactActivity extends AppCompatActivity {
         boutonValidation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if (!isValidEmail(mail.getText().toString())){
+                    Toast.makeText(AddContactActivity.this, "Votre email n'est pas correctement rempli", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 if(!nom.getText().toString().equals("") && !prenom.getText().toString().equals("") && !phone.getText().toString().equals("")){
 
@@ -147,4 +154,9 @@ public class AddContactActivity extends AppCompatActivity {
     public  void openDatePicker(View view){
         datePickerDialog.show();
     }
+
+    public static boolean isValidEmail(CharSequence cible) {
+        return (!TextUtils.isEmpty(cible) && Patterns.EMAIL_ADDRESS.matcher(cible).matches());
+    }
+
 }

@@ -18,14 +18,14 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="start"
+        android:layout_margin="@dimen/little_margin"
         android:text="Formulaire" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="start"
+        android:layout_margin="@dimen/little_margin"
         android:text="Liste des contacts" />
 
 </LinearLayout>
