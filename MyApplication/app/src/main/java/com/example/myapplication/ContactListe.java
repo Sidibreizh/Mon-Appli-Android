@@ -1,13 +1,13 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.QuickContactBadge;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.HashMap;
 
@@ -16,9 +16,13 @@ public class ContactListe extends AppCompatActivity implements RecyclerViewInter
     ListView ls;
     String nom, telephone;
     HashMap<String,String> mapContact;
+<<<<<<< Updated upstream
     Contacts c = new Contacts();
     SimpleAdapter adapter;
     RecyclerViewInterface recycler;
+=======
+    static Contacts c = new Contacts();
+>>>>>>> Stashed changes
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +34,11 @@ public class ContactListe extends AppCompatActivity implements RecyclerViewInter
         telephone = "\t\t" + extras.getString("telephone");
 
         ls = findViewById(R.id.liste);
+<<<<<<< Updated upstream
         mapContact = new HashMap<String,String>();
+=======
+        mapContact = new HashMap<>();
+>>>>>>> Stashed changes
         mapContact.put("nom",nom);
         mapContact.put("prenom",nom);
         mapContact.put("telephone",telephone);

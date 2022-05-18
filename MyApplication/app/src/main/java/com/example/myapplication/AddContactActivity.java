@@ -1,8 +1,5 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,16 +10,26 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
+<<<<<<< Updated upstream
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+=======
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+>>>>>>> Stashed changes
 import java.util.Calendar;
-import java.util.TimeZone;
+
+import pl.droidsonroids.gif.GifImageView;
 
 public class AddContactActivity extends AppCompatActivity{
 
+    private GifImageView imageView;
+    private RadioGroup radioGroup;
     private RadioButton radioButtonM;
     private RadioButton radioButtonF;
     private Button boutonValidation, boutonListe, dateBouton;
@@ -35,6 +42,9 @@ public class AddContactActivity extends AppCompatActivity{
         setContentView(R.layout.activity_add_contact);
         initDatePicker();
 
+        this.imageView = this.findViewById(R.id.imageView);
+
+        radioGroup = findViewById(R.id.radioGroup);
         radioButtonF = findViewById(R.id.radioButtonF);
         radioButtonM = findViewById(R.id.radioButtonM);
         boutonValidation = findViewById(R.id.boutonValidation);
@@ -47,9 +57,35 @@ public class AddContactActivity extends AppCompatActivity{
         address = findViewById(R.id.address);
         dateBouton.setText(getTodaysDate());
 
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int id)
+            {
+                View radioButton = radioGroup.findViewById(id);
+                int index = radioGroup.indexOfChild(radioButton);
+
+                if(index == 0)
+                {
+                    showImage1();
+                }
+                else
+                {
+                    showImage2();
+                }
+            }
+        });
+
         boutonValidation.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
+                if(!mail.getText().toString().equals("")){
+                    if (!isValidEmail(mail.getText().toString())) {
+                        Toast.makeText(AddContactActivity.this, "Votre email n'est pas correctement rempli", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                }
 
                 if (!isValidEmail(mail.getText().toString())){
                     Toast.makeText(AddContactActivity.this, "Votre email n'est pas correctement rempli", Toast.LENGTH_SHORT).show();
@@ -78,9 +114,19 @@ public class AddContactActivity extends AppCompatActivity{
 
                 boutonListe.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View view) {
-                        Intent myIntents = new Intent(AddContactActivity.this, ContactListe.class);
-                        startActivity(myIntents);
+                    public void onClick(View view)
+                    {
+                        if(ContactListe.c == null)
+                        {
+                            Toast toastListe = Toast.makeText(AddContactActivity.this, "Liste vide", Toast.LENGTH_SHORT);
+                            toastListe.show();
+
+                        }
+                        /*else
+                        {
+                            Intent myIntents = new Intent(AddContactActivity.this, ContactListe.class);
+                            startActivity(myIntents);
+                        }*/
                     }
                 });
             }
@@ -154,9 +200,24 @@ public class AddContactActivity extends AppCompatActivity{
     public  void openDatePicker(View view){
         datePickerDialog.show();
     }
+<<<<<<< Updated upstream
 
     public static boolean isValidEmail(CharSequence cible) {
         return (!TextUtils.isEmpty(cible) && Patterns.EMAIL_ADDRESS.matcher(cible).matches());
     }
 
 }
+=======
+    private void showImage1()
+    {
+        this.imageView.setImageResource(R.drawable.photofunky);
+    }
+    private void showImage2()
+    {
+        this.imageView.setImageResource(R.drawable.femme_image_animee_0029);
+    }
+    public static boolean isValidEmail(CharSequence cible) {
+        return (!TextUtils.isEmpty(cible) && Patterns.EMAIL_ADDRESS.matcher(cible).matches());
+    }
+}
+>>>>>>> Stashed changes

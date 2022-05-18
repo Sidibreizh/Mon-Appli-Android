@@ -14,29 +14,32 @@
     tools:context=".AddContactActivity">
 
         <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#fff"
-            android:src="@drawable/football"
+            android:layout_height="200dp"
             android:layout_margin="@dimen/medium_margin"
-            />
+            android:background="#fff"
+            android:src="@drawable/ic_launcher_foreground" />
 
         <RadioGroup
+            android:id="@+id/radioGroup"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="horizontal"
             android:layout_margin="@dimen/medium_margin">
 
             <RadioButton
                 android:id="@+id/radioButtonM"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="M" />
 
             <RadioButton
                 android:id="@+id/radioButtonF"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="F" />
+        </RadioGroup>
 
             <EditText
                 android:id="@+id/nom"
@@ -108,7 +111,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="*champs obligatoires" />
-        </RadioGroup>
 
         <Button
             android:id="@+id/boutonValidation"
