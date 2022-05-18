@@ -26,12 +26,14 @@
             android:id="@+id/tvNom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="15dp" />
+            android:padding="15dp"
+            android:text="@string/nom" />
 
         <TextView
             android:id="@+id/tvTel"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@string/tel" />
 
     </LinearLayout>
 </LinearLayout>

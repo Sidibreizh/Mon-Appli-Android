@@ -2,7 +2,6 @@
 
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -15,29 +14,32 @@
     tools:context=".AddContactActivity">
 
         <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#fff"
-            android:src="@drawable/football"
+            android:layout_height="200dp"
             android:layout_margin="@dimen/medium_margin"
-            />
+            android:background="#fff"
+            android:src="@drawable/ic_launcher_foreground" />
 
         <RadioGroup
+            android:id="@+id/radioGroup"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="horizontal"
             android:layout_margin="@dimen/medium_margin">
 
             <RadioButton
                 android:id="@+id/radioButtonM"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="M" />
 
             <RadioButton
                 android:id="@+id/radioButtonF"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="F" />
+        </RadioGroup>
 
             <EditText
                 android:id="@+id/nom"
@@ -61,14 +63,21 @@
                 android:inputType="textPersonName"
                 android:minHeight="48dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/birthDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Date de naissance"
-                android:inputType="date"
-                android:minHeight="48dp" />
+                android:text="Date de naissance :" />
+
+            <Button
+                android:id="@+id/date_picker"
+                style="?android:spinnerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="openDatePicker"
+                android:text="01 JAN 2022"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/phone"
@@ -102,7 +111,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="*champs obligatoires" />
-        </RadioGroup>
 
         <Button
             android:id="@+id/boutonValidation"
@@ -110,6 +118,13 @@
             android:layout_height="60dp"
             android:layout_margin="@dimen/little_margin"
             android:text="Validation" />
+
+        <Button
+            android:id="@+id/boutonListe"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="@dimen/little_margin"
+            android:text="Liste des contacts" />
 
     </LinearLayout>
 </ScrollView>
