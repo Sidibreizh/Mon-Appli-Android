@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     Button button;
-    Button button2;
     TextView text;
 
     @Override
@@ -22,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
         Log.i("MainActivity", "Bonjour");
 
         button = findViewById(R.id.button);
-        button2 = findViewById(R.id.button2);
         text = findViewById(R.id.text);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -34,14 +32,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                text.setText("C'est parti pour la liste de contacts");
-                Intent myIntents = new Intent(MainActivity.this, ContactListe.class);
-                startActivity(myIntents);
-            }
-        });
     }
 
     @Override

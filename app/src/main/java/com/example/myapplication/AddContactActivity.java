@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -18,15 +19,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
 
-import pl.droidsonroids.gif.GifImageView;
-
 public class AddContactActivity extends AppCompatActivity {
 
-    private GifImageView imageView;
+    private ImageView imageView;
     private RadioGroup radioGroup;
     private RadioButton radioButtonM;
     private RadioButton radioButtonF;
-    private Button boutonValidation, boutonListe, dateBouton;
+    private Button boutonValidation, dateBouton;
     private EditText nom, prenom, phone, mail, address;
     private DatePickerDialog datePickerDialog;
 
@@ -42,7 +41,6 @@ public class AddContactActivity extends AppCompatActivity {
         radioButtonF = findViewById(R.id.radioButtonF);
         radioButtonM = findViewById(R.id.radioButtonM);
         boutonValidation = findViewById(R.id.boutonValidation);
-        boutonListe = findViewById(R.id.boutonListe);
         nom = findViewById(R.id.nom);
         prenom = findViewById(R.id.prenom);
         dateBouton = findViewById(R.id.date_picker);
@@ -74,10 +72,12 @@ public class AddContactActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-
-                if (!isValidEmail(mail.getText().toString())){
-                    Toast.makeText(AddContactActivity.this, "Votre email n'est pas correctement rempli", Toast.LENGTH_SHORT).show();
-                    return;
+                if(!mail.getText().toString().equals(""))
+                {
+                    if (!isValidEmail(mail.getText().toString())) {
+                        Toast.makeText(AddContactActivity.this, "Votre email n'est pas correctement rempli", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                 }
 
                 if(!nom.getText().toString().equals("") && !prenom.getText().toString().equals("") && !phone.getText().toString().equals("")){
@@ -99,24 +99,6 @@ public class AddContactActivity extends AppCompatActivity {
                     Toast toast = Toast.makeText(AddContactActivity.this,"Vous devez remplir les différents champs obligatoires", Toast.LENGTH_SHORT);
                     toast.show();
                 }
-
-                boutonListe.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view)
-                    {
-                        if(ContactListe.c == null)
-                        {
-                            Toast toastListe = Toast.makeText(AddContactActivity.this, "Liste vide", Toast.LENGTH_SHORT);
-                            toastListe.show();
-
-                        }
-                        /*else
-                        {
-                            Intent myIntents = new Intent(AddContactActivity.this, ContactListe.class);
-                            startActivity(myIntents);
-                        }*/
-                    }
-                });
             }
         });
     }
@@ -199,4 +181,5 @@ public class AddContactActivity extends AppCompatActivity {
     public static boolean isValidEmail(CharSequence cible) {
         return (!TextUtils.isEmpty(cible) && Patterns.EMAIL_ADDRESS.matcher(cible).matches());
     }
+
 }

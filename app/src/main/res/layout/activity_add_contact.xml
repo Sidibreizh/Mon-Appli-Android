@@ -119,12 +119,6 @@
             android:layout_margin="@dimen/little_margin"
             android:text="Validation" />
 
-        <Button
-            android:id="@+id/boutonListe"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_margin="@dimen/little_margin"
-            android:text="Liste des contacts" />
 
     </LinearLayout>
 </ScrollView>
